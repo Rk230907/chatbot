@@ -1,0 +1,68 @@
+.chart-container {
+  width: 92.5%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+  min-height: 100vh;
+  margin-left: 10px;
+}
+
+.filter-section {
+  display: flex;
+  justify-content: space-between; /* Align elements with space between */
+  margin: 10px 0;
+  gap: 20px;
+}
+
+.filter-item {
+  flex: 1;
+}
+
+.filter-input {
+  width: 100%; /* Use the full width available in the flex container */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.status-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status-item {
+  flex-basis: 100%;
+}
+
+.status-title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.title-checkbox {
+  margin-left: 10px;
+}
+
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.status-table th {
+  border-bottom: 2px solid #ccc;
+  padding: 5px;
+  text-align: left;
+}
+
+.status-table td {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}

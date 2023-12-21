@@ -1,0 +1,28 @@
+.chatbot-container {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.message {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.message.bot {
+  background-color: lightblue;
+  align-self: start;
+}
+
+.message.user {
+  background-color: lightgreen;
+  align-self: end;
+}

@@ -1,0 +1,138 @@
+/* my-line-chart-container */
+.my-line-chart-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+/* modal */
+.modal {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* small-modal */
+.small-modal {
+  width: 200px; /* Adjust the width for a smaller modal */
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* chart-section */
+.chart-section {
+  width: 50%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+  min-height: 100vh;
+}
+
+/* date-inputs */
+.date-inputs {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 20px;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+}
+
+.date-picker {
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* status-filters */
+.status-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status-filter {
+  flex-basis: 100%;
+}
+
+/* filter-header */
+.filter-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-icon.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* status-table */
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.status-header {
+  border-bottom: 2px solid #ccc;
+  padding: 5px;
+  text-align: left;
+}
+
+/* status-cell */
+.status-cell {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+/* alert-modal */
+.alert-modal {
+  position: absolute; /* Absolute positioning for the alert modal */
+  top: 20px; /* Position at the top with some spacing */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: #f44336; /* Red background color */
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px; /* Rounded corners */
+  max-width: 300px; /* Maximum width of the modal */
+  width: auto; /* Automatically adjust width based on content */
+}
+
+/* alert-content */
+.alert-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alert-content h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.alert-content p {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.alert-content button {
+  background-color: white;
+  color: #f44336;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
