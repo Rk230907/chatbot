@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import ChatBot from 'react-simple-chatbot';
-import { ThemeProvider } from 'styled-components';
-import { Navigate } from 'react-router-dom';  
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import ChatBot from "react-simple-chatbot";
+import { ThemeProvider } from "styled-components";
+import { Navigate } from "react-router-dom";
 
 const theme = {
   background: "#83A2FF",
@@ -32,27 +32,27 @@ const config = {
 
 const Review = ({ steps }) => {
   const [state, setState] = useState({
-    accountId: '',
-    customerId: '',
-    subscriberId: '',
-    orderId: '',
-    productName: '',
+    accountId: "",
+    customerId: "",
+    subscriberId: "",
+    orderId: "",
+    productName: "",
   });
 
   useEffect(() => {
     setState({
-      accountId: steps['account-id']?.value || 'Not provided',
-      customerId: steps['customer-id']?.value || 'Not provided',
-      subscriberId: steps['subscriber-id']?.value || 'Not provided',
-      orderId: steps['order-id']?.value || 'Not provided',
-      productName: steps['product-name']?.value || 'Not provided',
+      accountId: steps["account-id"]?.value || "Not provided",
+      customerId: steps["customer-id"]?.value || "Not provided",
+      subscriberId: steps["subscriber-id"]?.value || "Not provided",
+      orderId: steps["order-id"]?.value || "Not provided",
+      productName: steps["product-name"]?.value || "Not provided",
     });
   }, [steps]);
 
   const { accountId, customerId, subscriberId, orderId, productName } = state;
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: "100%" }}>
       <h3>Summary</h3>
       <table>
         <tbody>
@@ -90,9 +90,10 @@ const ChatBotComponent = () => {
   const [chatKey, setChatKey] = useState(0);
   const [apiResponse, setApiResponse] = useState(null);
   const [redirectToTestComponent, setRedirectToTestComponent] = useState(false);
-  
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const submitDetails = async (steps) => {
+    await delay(3000); // Wait for 3 seconds
     const payload = {
       serviceType: "test", // Hardcoded value
       accountId: steps["account-id"]?.value || "",
@@ -102,12 +103,11 @@ const ChatBotComponent = () => {
       productName: steps["product-name"]?.value || "",
     };
 
-
     try {
-      const response = await fetch('https://your-api-endpoint.com/submit', {
-        method: 'POST',
+      const response = await fetch("https://your-api-endpoint.com/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
@@ -120,7 +120,7 @@ const ChatBotComponent = () => {
       setApiResponse(data);
       setRedirectToTestComponent(true);
     } catch (error) {
-      console.error('API call failed:', error);
+      console.error("API call failed:", error);
       setApiResponse(null);
       setRedirectToTestComponent(true);
     }
@@ -131,17 +131,16 @@ const ChatBotComponent = () => {
   }
 
   const handleEnd = ({ steps, values }) => {
-    if (values[values.length - 1] === 'yes') {
-      submitDetails(steps);
+    if (values[values.length - 1] === "yes") {
+      // submitDetails(steps);
     } else {
-      setChatKey(prevChatKey => prevChatKey + 1);
+      setChatKey((prevChatKey) => prevChatKey + 1);
       setApiResponse(null);
       setRedirectToTestComponent(false);
-
     }
   };
 
-  const steps=[
+  const steps = [
     {
       id: "welcome",
       message: "Hello there! What do you want me to do?",
@@ -275,28 +274,45 @@ const ChatBotComponent = () => {
     {
       id: "confirm-response",
       options: [
-        { value: "yes", label: "Yes", trigger: "end-chat" },
+        { value: "yes", label: "Yes", trigger: "submit-details" },
         { value: "no", label: "No", trigger: "end-chat" },
       ],
     },
     // End chat
     {
       id: "end-chat",
-      message: "Thank you for using our service! Please wait while we are preparing your order Information!!",
+      message:
+        "Thank you for using our service! Please wait while we are preparing your order Information!!",
       end: true,
     },
     // Steps for 'Something Else' option
+    {
+      id: "submit-details",
+      message:
+        "Submitting your details... Please Wait while we prepare order information...",
+      trigger: ({ steps }) => {
+        submitDetails(steps);
+        return "submission-complete";
+      },
+    },
+    {
+      id: "submission-complete",
+      message: "Your details have been submitted!",
+      end: true,
+    },
     {
       id: "handleElse",
       message: "This feature is under construction.",
       end: true,
     },
-  ]
+  ];
 
   return (
     <ThemeProvider theme={theme}>
       {apiResponse ? (
-        <div>/* Render your response or a component based on the API response */</div>
+        <div>
+          /* Render your response or a component based on the API response */
+        </div>
       ) : (
         <ChatBot
           key={chatKey}
