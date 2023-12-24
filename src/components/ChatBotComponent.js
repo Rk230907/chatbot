@@ -320,6 +320,8 @@ const ChatBotComponent = () => {
           headerTitle="HOBSBOT"
           {...config}
           handleEnd={handleEnd}
+          recognitionEnable={true}
+          speechSynthesis={{ enable: true, lang: "en" }}
         />
       )}
     </ThemeProvider>

@@ -57,6 +57,11 @@
         
         5 - In javascript except - 0, null, "", false, undefined everything is true.
 
+        6 - preventDefault  is used to avoid the behaviour of synthetic events form submission reloading - event.preventDefault()
         
+        7 - Create Ref - Referring / access the data directly from DOM tree. (let ref = React.createRef();)
+            <input ref = {inputRef} />
+            
+
 
 */
