@@ -130,14 +130,19 @@ const ChatBotComponent = () => {
     return <Navigate to="/test" state={{ response: apiResponse }} />;
   }
 
+  // const handleEnd = ({ steps, values }) => {
+  //   if (values[values.length - 1] === "yes") {
+  //     // submitDetails(steps);
+  //   } else {
+  //     setChatKey((prevChatKey) => prevChatKey + 1);
+  //     setApiResponse(null);
+  //     setRedirectToTestComponent(false);
+  //   }
+  // };
+
   const handleEnd = ({ steps, values }) => {
-    if (values[values.length - 1] === "yes") {
-      // submitDetails(steps);
-    } else {
-      setChatKey((prevChatKey) => prevChatKey + 1);
-      setApiResponse(null);
-      setRedirectToTestComponent(false);
-    }
+    // Your existing code...
+    setChatKey((prevChatKey) => prevChatKey + 1); // Resetting chatbot
   };
 
   const steps = [
@@ -309,21 +314,15 @@ const ChatBotComponent = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      {apiResponse ? (
-        <div>
-          /* Render your response or a component based on the API response */
-        </div>
-      ) : (
-        <ChatBot
-          key={chatKey}
-          steps={steps}
-          headerTitle="HOBSBOT"
-          {...config}
-          handleEnd={handleEnd}
-          recognitionEnable={true}
-          speechSynthesis={{ enable: true, lang: "en" }}
-        />
-      )}
+      <ChatBot
+        key={chatKey}
+        steps={steps}
+        headerTitle="HOBSBOT"
+        {...config}
+        handleEnd={handleEnd}
+        recognitionEnable={true}
+        // speechSynthesis={{ enable: true, lang: "en" }}
+      />
     </ThemeProvider>
   );
 };
