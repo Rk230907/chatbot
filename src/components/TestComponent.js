@@ -1,16 +1,16 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import ChatBotComponent from "./ChatBotComponent";
 
-const TestComponent = ({ apiResponse }) => {
-  const content = apiResponse ? (
-    <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
-  ) : (
-    <p>No data found.</p>
-  );
+const TestComponent = () => {
+  const location = useLocation();
+  const apiResponse = location.state?.response;
 
   return (
     <div>
+      <ChatBotComponent />
       <h2>API Response</h2>
-      {content}
+      <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
     </div>
   );
 };

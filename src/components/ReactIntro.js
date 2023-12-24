@@ -48,6 +48,15 @@
             ).map((arr) => 
             	<h1>{arr}</h1>
             )}
+
+
+        4 - Assigning Unique Keys in React
+            {cars.map((car, index) => (
+                <li key = {index}> {car} </li>
+            ))}
+        
+        5 - In javascript except - 0, null, "", false, undefined everything is true.
+
         
 
 */
